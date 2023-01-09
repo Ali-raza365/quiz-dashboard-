@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import { IconButton } from "@material-tailwind/react";
 import {
@@ -9,10 +9,21 @@ import {
 } from "@/widgets/layout";
 import routes from "@/routes";
 import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { useEffect } from "react";
 
 export function Dashboard() {
-  const [controller, dispatch] = useMaterialTailwindController();
+  const dispatch = useDispatch()
+  const token = useSelector(state => state.token)
+  const auth = useSelector(state => state.auth)
+  const history = useNavigate()
+  const [controller, ] = useMaterialTailwindController();
   const { sidenavType } = controller;
+
+  useEffect(() => {
+    // if(!token) return     history("/home")
+  },[])
 
   return (
     <div className="min-h-screen bg-blue-gray-50/50">

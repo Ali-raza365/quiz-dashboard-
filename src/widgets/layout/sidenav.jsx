@@ -18,6 +18,10 @@ export function Sidenav({ brandImg, brandName, routes }) {
     transparent: "bg-transparent",
   };
 
+  const logout =()=>{
+    // localStorage.removeItem('token')
+  }
+
   return (
     <aside
       className={`${sidenavTypes[sidenavType]} ${
@@ -68,6 +72,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 <NavLink to={`/${layout}${path}`}>
                   {({ isActive }) => (
                     <Button
+                    onClick={name == "Log out" ?logout:null}
                       variant={isActive ? "gradient" : "text"}
                       color={
                         isActive
